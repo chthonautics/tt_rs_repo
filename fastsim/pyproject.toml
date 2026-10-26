@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trailer-sim"
+version = "0.1.0"
+description = "Tractor-trailer synthetic route/energy data generation on top of FASTSim (research data generator)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["../LICENSE"]
+dependencies = [
+    "fastsim>=3.1,<4",
+    "numpy>=1.26",
+    "polars>=1.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "hypothesis>=6", "pandas>=2"]
+
+[project.scripts]
+trailer-sim = "trailer_sim.cli:main"
+
+[tool.setuptools]
+packages = ["trailer_sim"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+trailer_sim = [
+    "templates/*.yaml",
+    "templates/*.md",
+    "presets/*.yaml",
+    "presets/*.md",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

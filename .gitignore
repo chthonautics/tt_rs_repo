@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Test and linter caches
+.pytest_cache/
+.hypothesis/
+.ruff_cache/
+.mypy_cache/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Generated datasets and logs (regenerate with `trailer-sim generate`)
+datasets/
+*.log
+
+# Pinned FASTSim template (regenerate with `trailer-sim pin-vehicles`)
+fastsim/trailer_sim/templates/bev_tractor_base.yaml
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store

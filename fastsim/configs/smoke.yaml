@@ -1,0 +1,35 @@
+# Smoke run: 100-300 routes, the first end-to-end validation of the pipeline.
+# Everything not listed here falls back to the built-in three-class mixture
+# (see `trailer_sim.config.default_config`).
+
+run_name: smoke_v0
+master_seed: 20261018
+n_routes: 200
+
+trailers:
+  fidelity: quasi_static
+
+noise:
+  input:
+    enabled: true
+    default_sigma: 0.03
+    per_parameter:
+      tractor_mass_kg: 0.02
+      trailer_mass_kg: 0.04
+      axle_crr: 0.05
+      drag_coef: 0.03
+      frontal_area_m2: 0.02
+  output:
+    enabled: true
+    sigma: 0.015
+
+sim:
+  dt_base_s: 1.0
+  max_substeps_per_segment: 60
+  trace_miss_opts: Error
+  max_route_retries: 4
+
+output:
+  dir: ../datasets
+  train_fraction: 0.8
+  stratify: [vehicle_class, n_trailers]

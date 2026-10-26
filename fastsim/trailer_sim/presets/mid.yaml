@@ -1,0 +1,56 @@
+# Vehicle-class preset: mid
+# Terminal / distribution: the most represented class; sits between the extremes.
+#
+# Read by trailer_sim.config.default_config(); this file is the source of truth
+# for the built-in mixture. Fields omitted here fall back to the ClassConfig
+# defaults in config.py. Edit values freely, then re-run the generator.
+
+# --- sampling mixture -----------------------------------------------
+weight: 0.6
+n_trailers: [1, 2]
+
+# --- static physical parameters (annex A1.2 fields; sampled ranges) -
+tractor_mass_kg: [7000.0, 16000.0]
+trailer_mass_kg: [3000.0, 10000.0]
+axle_crr: [0.007, 0.012]
+drag_coef: [0.5, 0.7]
+frontal_area_m2: [6.0, 10.0]
+
+# --- route synthesis ------------------------------------------------
+segments: [20, 50]
+seg_len_m: [25.0, 100.0]
+speed_mps: [3.0, 14.0]
+creep_speed_mps: 0.5
+grade_max: 0.1
+grade_amplitude: 0.025
+grade_correlation_segments: 6.0
+turn_rad: [0.1, 0.4]
+turn_probability: 0.25
+dwell_fraction: 0.18
+dwell_speed_frac: 0.2
+accel_max_mps2: 0.7
+max_rel_speed_change: 0.4
+net_elev_drop_max_m: 60.0
+
+# --- simplified trailer physics -------------------------------------
+n_trailer_axles: 2
+hitch_to_axle_m: 3.5
+trailer_track_m: 2.0
+trailer_cg_height_m: 1.2
+trailer_wheelbase_m: 4.0
+tongue_weight_frac: 0.18
+tractor_cg_height_m: 1.1
+tractor_wheelbase_m: 3.6
+axle_crr_by_position: [0.007, 0.008, 0.009]
+trailer_drag_coef: 0.6
+trailer_frontal_area_m2: [6.0, 9.0]
+wake_factor: 0.15
+
+# --- powertrain (FASTSim vehicle assembly) --------------------------
+em_pwr_kw: [150.0, 350.0]
+battery_kwh: [80.0, 250.0]
+wheel_radius_m: 0.4
+wheel_inertia_kg_m2: 12.0
+
+# --- battery pre-conditioning --------------------------------
+conditioning_headroom_j: 15000000.0
